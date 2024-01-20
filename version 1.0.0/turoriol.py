@@ -103,3 +103,4 @@ display_all_contestants(contestants_list)
 
 # Declare the winner
 declare_winner(contestants_list)
+
