@@ -51,33 +51,29 @@ def add_competition(competitions, competition_name):
     competitions.append(Competition(competition_name))
 
 
+def get_valid_score_input():
+    while True:
+        try:
+            points = int(input("Ballarni kiriting (1-9 oraligida ball bering!) -> "))
+            if 1 <= points <= 9:
+                return points
+            else:
+                print("Noto'g'ri ball! Faqat 1-9 oraligida ball bering.")
+        except ValueError:
+            print("Noto'g'ri qiymat! Faqat raqam kiriting.")
+
+
 def conduct_team_competition(teams, competition):
     for team in teams:
-        while True:
-            try:
-                points = int(input(f"{team.name} uchun ballarni {competition.name} musobaqasi boyicha kiriting (1-9 oraligida ball bering!) -> "))
-                if 1 <= points <= 9:
-                    break
-                else:
-                    print("Siz xato ball berdingiz! Bunday ball berish tizimi topilmadi. Iltimos qayta urinib ko'ring!")
-            except ValueError:
-                print("Noto'g'ri qiymat! Faqat raqam kiriting.")
-
+        print(f"\n{team.name} uchun {competition.name} musobaqasi:")
+        points = get_valid_score_input()
         team.add_points(competition.name, points)
 
 
 def conduct_individual_competition(participants, competition):
     for participant in participants:
-        while True:
-            try:
-                points = int(input(f"{participant.name} uchun ballarni {competition.name} musobaqasi boyicha kiriting (1-9 oraligida ball bering!) -> "))
-                if 1 <= points <= 9:
-                    break
-                else:
-                    print("Siz xato ball berdingiz! Bunday ball berish tizimi topilmadi. Iltimos qayta urinib ko'ring!")
-            except ValueError:
-                print("Noto'g'ri qiymat! Faqat raqam kiriting.")
-
+        print(f"\n{participant.name} uchun {competition.name} musobaqasi:")
+        points = get_valid_score_input()
         participant.add_points(competition.name, points)
 
 
